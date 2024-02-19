@@ -2,7 +2,7 @@
 In this repository our goal is to create web scrappers using python
 
 ## Goals
-Create two web scrappers to bring information from
+Create two web scrapers to bring information from
 * A Quote web site https://quotes.toscrape.com/
 * A Book web site https://books.toscrape.com/
 
