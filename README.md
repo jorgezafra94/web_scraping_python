@@ -9,3 +9,8 @@ Create two web scrappers to bring information from
 ## Technologies
 * `requests` library to use get http method and bring pages
 * `BeautifulSoup` module to be able to navigate in a html page
+
+## Important
+We use `pipenv` to install al this packages that is why we have
+`Pipfile` and `Pipfile.lock` files to use them as reference for 
+requirements needed in order to install all the packages for the program  to run.
