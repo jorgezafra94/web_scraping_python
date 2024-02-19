@@ -7,22 +7,16 @@ def clean_price(price):
     result = re.match(expression, price)
     return result.group(1)
 
-
-def star_word_to_num(word):
-    match word.lower():
-        case 'one':
-            return 1
-        case 'two':
-            return 2
-        case 'three':
-            return 3
-        case 'four':
-            return 4
-        case 'five':
-            return 5
-
-
 class BookParser:
+
+    STARS = {
+        'one': 1,
+        'two': 2,
+        'three': 3,
+        'four': 4,
+        'five': 5
+    }
+
     def __init__(self, parent):
         self.parent = parent
 
@@ -55,4 +49,4 @@ class BookParser:
         locator = BookLocator.BOOK_STARTS
         p_tag = self.parent.select_one(locator)
         book_stars = p_tag.attrs.get('class')[1]
-        return star_word_to_num(book_stars)
+        return BookParser.STARS[book_stars.lower()]
