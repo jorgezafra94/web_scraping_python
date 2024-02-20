@@ -7,8 +7,8 @@ def clean_price(price):
     result = re.match(expression, price)
     return result.group(1)
 
-class BookParser:
 
+class BookParser:
     STARS = {
         'one': 1,
         'two': 2,
@@ -48,5 +48,7 @@ class BookParser:
     def stars(self):
         locator = BookLocator.BOOK_STARTS
         p_tag = self.parent.select_one(locator)
-        book_stars = p_tag.attrs.get('class')[1]
-        return BookParser.STARS[book_stars.lower()]
+        classes = p_tag.attrs.get('class')
+        rating = [name for name in classes if name != 'star-rating']
+        book_stars = rating[0].lower()
+        return BookParser.STARS.get(book_stars)
