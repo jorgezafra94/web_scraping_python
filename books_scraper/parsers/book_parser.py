@@ -1,11 +1,5 @@
-import re
 from locators.book_locator import BookLocator
-
-
-def clean_price(price):
-    expression = '[^0-9](\\d+.\\d+)'
-    result = re.match(expression, price)
-    return result.group(1)
+from regex.book_regex import BookRegex
 
 
 class BookParser:
@@ -35,8 +29,7 @@ class BookParser:
         locator = BookLocator.BOOK_PRICE
         p_tag = self.parent.select_one(locator)
         price_string = p_tag.string
-        real_price = float(clean_price(price_string))
-        return real_price
+        return BookRegex.get_book_price(price_string)
 
     @property
     def availability(self):
