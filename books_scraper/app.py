@@ -5,20 +5,20 @@ https://books.toscrape.com/
 import requests
 from pages.book_page import BookPage
 
-basic_url = 'https://books.toscrape.com/'
-url = basic_url
+BASIC_URL = 'https://books.toscrape.com'
+PAGE_URL = BASIC_URL + '/catalogue/page-{}.html'
 
-while True:
-    raw_page = requests.get(url).content
-    book_page = BookPage(raw_page)
-    for book in book_page.get_books():
-        print(book)
 
-    next_page_url = book_page.get_next_page()
-    if next_page_url:
-        print(f"-------------- NEXT PAGE ----------------------------")
-        if 'catalogue' not in next_page_url:
-            next_page_url = 'catalogue/' + next_page_url
-        url = basic_url + next_page_url
-    else:
-        break
+def get_all_books():
+    all_books = []
+    raw_page = requests.get(BASIC_URL).content
+    first_books = BookPage(raw_page)
+    all_books.extend(first_books.books)
+
+    for i in range(2, first_books.pages + 1):
+        page_url = PAGE_URL.format(i)
+        raw_page = requests.get(page_url).content
+        new_book_page = BookPage(raw_page)
+        all_books.extend(new_book_page.books)
+
+    return all_books
