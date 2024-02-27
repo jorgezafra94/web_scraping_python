@@ -5,6 +5,7 @@ In this repository our goal is to create web scrappers using python
 Create two web scrapers to bring information from
 * A Quote web site https://quotes.toscrape.com/
 * A Book web site https://books.toscrape.com/
+* A Quote web site only with javascript https://quotes.toscrape.com/search.aspx
 
 ## Technologies
 * `requests` library to use get http method and bring pages
@@ -21,8 +22,9 @@ run the ``app.py`` file for `quotes_scraper`<br>
 run the ``menu.py`` file for `book_scraper`
 <br>
 
-`selenium_quotes_scraper` is the `selenium` scrapers.<br>
+`selenium_quotes_scraper` and  `selenium_quotes_js_scraper` are the `selenium` scrapers.<br>
 run the ``app.py`` file for `selenium_quotes_scraper`<br>
+run the ``app.py`` file for `selenium_quotes_js_scraper`<br>
 
 ## Important
 We use `pipenv` to install al this packages that is why we have
